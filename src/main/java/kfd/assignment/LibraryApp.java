@@ -1,6 +1,9 @@
 package kfd.assignment;
 
 import java.util.concurrent.Callable;
+
+import kfd.assignment.model.CommandProcessor;
+import kfd.assignment.model.Library;
 import picocli.CommandLine;
 
 @CommandLine.Command
@@ -11,7 +14,7 @@ public class LibraryApp implements Callable<Integer> {
     }
 
     @Override
-    public Integer call() throws Exception {
-        return 0;
+    public Integer call() {
+        return new CommandLine(new CommandProcessor(System.in, System.out, new Library())).execute();
     }
 }
